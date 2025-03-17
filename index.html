@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Programa</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Función para reproducir la música cuando se hace clic en "Aceptar"
+        $('#aceptar').on('click', function() {
+            var audio = new Audio('audio/Letra Traducida When I was your man de Bruno Mars.mp3');
+            audio.play();  // Reproducir el audio
+        });
+    });
+</script>
+<script> 
+$(document).ready(function(){
+    // Función para mover el botón p1 a una posición aleatoria rápidamente
+    function moverBotonAleatorio() {
+        var contenedorHeight = $('.contenedor').height();
+        var contenedorWidth = $('.contenedor').width();
+        var botonHeight = $('.p1').height();
+        var botonWidth = $('.p1').width();
+
+        // Calculamos la posición aleatoria asegurándonos de que el botón no se salga del contenedor
+        var arriba = Math.random() * (contenedorHeight - botonHeight);
+        var izquierda = Math.random() * (contenedorWidth - botonWidth);
+
+        $('.p1').css({
+            'top': arriba + 'px',
+            'left': izquierda + 'px',
+            'transition': 'top 0.1s ease, left 0.1s ease'  // Asegura que el movimiento sea rápido
+        });
+    }
+
+    // Mover el botón al pasar el mouse sobre él
+    $('.p1').on('mouseenter', function(){
+        moverBotonAleatorio();
+    });
+
+    // Mover el botón al hacer clic sobre él
+    $('.p1').on('click', function(){
+        moverBotonAleatorio();
+    });
+
+    // Función para mostrar el mensaje "Si"
+    function dijoSi(){
+        document.getElementById('si').style.display = 'block';
+        document.getElementById('opciones').style.display = 'none';  // Ocultar las opciones
+    }
+
+    // Función para ocultar el mensaje y volver a mostrar las opciones
+    function volverAtras(){
+        document.getElementById('si').style.display = 'none';
+        document.getElementById('opciones').style.display = 'block';  // Mostrar las opciones nuevamente
+        window.location.href = 'flores.html';  // Redirigir a la página flores.html
+    }
+
+    // Asignar la función al evento click del botón Sí
+    $('.p2').on('click', dijoSi);
+    
+    // Asignar la función al evento click del botón Aceptar
+    $('#aceptar').on('click', volverAtras);
+});
+</script>
+
+</head>
+<body>
+
+
+<div class="contenedor">
+    <center>
+        <div class="tenor-gif-embed" data-postid="15384582447505476072" data-width="100%">
+            <a href="https://tenor.com/view/ok-drive-gif-15384582447505476072">Ok Drive GIF</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </center> 
+
+    <div class="titulo">
+        <h2>¿Aceptarias ser mi san valentín el 22 Sharis ?</h2>
+    </div>
+
+    <div class="opciones" id="opciones">
+        <p class="p1">No</p>
+        <p onclick="dijoSi()" class="p2">Si</p>
+    </div>
+
+    <div id="si" style="display: none;">
+        <h2>Sabia que dirías que sí. </h2>
+        <center>
+            <div class="tenor-gif-embed" data-postid="15158230222950356755" data-width="100%">
+                <a href="https://tenor.com/view/cat-dance-chinese-dancing-gif-15158230222950356755">Cat Dance GIF</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </center>
+        <button id="aceptar">Aceptar</button> <!-- Botón Aceptar para volver atrás -->
+    </div>
+</div>
+</body>
+</html>
